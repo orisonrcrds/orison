@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- ORISON RCRDS v1.0 -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>orison rcrds — independent music label from paris</title>
+<meta name="description" content="ORISON RCRDS — Independent music label from Paris. Cutting-edge electronic music.">
+
+<link rel="canonical" href="https://orisonrcrds.com/">
+<link rel="icon" type="image/png" sizes="48x48" href="./favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orisonrcrds.com/">
+<meta property="og:title" content="orison rcrds — independent music label from paris">
+<meta property="og:description" content="An independent music label from Paris. Cutting-edge electronic music, brought to life.">
+<meta property="og:image" content="https://orisonrcrds.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Orison Rcrds">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="orison rcrds — independent music label from paris">
+<meta name="twitter:description" content="An independent music label from Paris. Cutting-edge electronic music, brought to life.">
+<meta name="twitter:image" content="https://orisonrcrds.com/og-image.png">
+<meta name="theme-color" content="#0a0a0a">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Orison Rcrds",
+  "url": "https://orisonrcrds.com/",
+  "logo": "https://orisonrcrds.com/assets/logo/orison.png",
+  "foundingDate": "2026",
+  "email": "orisonoff@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Paris", "addressCountry": "FR" },
+  "sameAs": [
+    "https://www.youtube.com/@Orisonrcrds/",
+    "https://www.instagram.com/orisonrcrds"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://img.youtube.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@200;300;400;500;600;700&family=Geist+Mono:wght@300;400;500&display=swap">
+<style>
+  /* ============================================
+     ZONA PRO — for the label brand
+     ============================================ */
+  @font-face {
+    font-family: 'Zona Pro';
+    src: url('./assets/fonts/ZonaPro-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Zona Pro';
+    src: url('./assets/fonts/ZonaPro-Thin.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-elevated: #111111;
+    --fg: #f5f5f0;
+    --fg-soft: #9c9c94;
+    --fg-dim: #6a6a65;
+    --fg-faint: #2a2a28;
+    --line: rgba(245, 245, 240, 0.08);
+    --line-strong: rgba(245, 245, 240, 0.15);
+    --grain-opacity: 0.04;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Geist', -apple-system, sans-serif;
+    font-weight: 300;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Grain overlay (everywhere) */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: var(--grain-opacity);
+    mix-blend-mode: overlay;
+  }
+
+  /* ============================================
+     NAVIGATION
+     ============================================ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+  }
+
+  /* Floating scrim — blur AND tint both fade to nothing via mask,
+     and extend past the nav, so there is no visible edge cutting the page. */
+  .nav::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 180%;
+    z-index: -1;
+    pointer-events: none;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: linear-gradient(to bottom,
+      rgba(10, 10, 10, 0.5) 0%,
+      rgba(10, 10, 10, 0.18) 45%,
+      transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 30%, transparent 95%);
+    mask-image: linear-gradient(to bottom, black 0%, black 30%, transparent 95%);
+    opacity: 0;
+    transition: opacity 0.5s var(--ease);
+  }
+
+  .nav.scrolled::before { opacity: 1; }
+
+  .nav-brand {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s var(--ease);
+  }
+
+  .nav-brand img {
+    height: 100%;
+    width: auto;
+    display: block;
+  }
+
+  .nav.scrolled .nav-brand {
+    opacity: 1;
+  }
+
+  .nav-right {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+
+  .nav-links a {
+    color: var(--fg-dim);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.3s var(--ease);
+    position: relative;
+  }
+
+  .nav-links a:hover { color: var(--fg); }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: 0; right: 0;
+    height: 1px;
+    background: var(--fg);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease);
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .lang-toggle {
+    display: flex; gap: 2px; align-items: center;
+    border: 1px solid var(--line-strong);
+    padding: 4px;
+    border-radius: 2px;
+  }
+
+  .lang-toggle button {
+    background: none; border: none;
+    color: var(--fg-dim);
+    cursor: pointer;
+    padding: 4px 10px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s var(--ease);
+  }
+
+  .lang-toggle button.active { background: var(--fg); color: var(--bg); }
+  .lang-toggle button:not(.active):hover { color: var(--fg); }
+
+  /* ============================================
+     HERO — ORISON (the duo)
+     ============================================ */
+  .hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 48px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  /* ============================================
+     AURORA — global animated gradient (fixed, behind everything)
+     Stays present site-wide, subdued on scroll via JS.
+     ============================================ */
+  .site-aurora {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    will-change: opacity;
+  }
+
+  .aurora-layer {
+    position: absolute;
+    inset: -20%;
+    will-change: transform;
+    mix-blend-mode: screen;
+  }
+
+  /* Cool palette only — no warm/yellow tones */
+  .aurora-layer:nth-child(1) {
+    background:
+      radial-gradient(ellipse 60% 80% at 25% 40%, rgba(70, 110, 180, 0.7) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 70% at 75% 60%, rgba(100, 70, 160, 0.55) 0%, transparent 60%);
+    filter: blur(70px);
+    animation: aurora1 22s var(--ease) infinite;
+  }
+
+  .aurora-layer:nth-child(2) {
+    background:
+      radial-gradient(ellipse 70% 60% at 70% 25%, rgba(140, 70, 150, 0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 30% 80%, rgba(60, 80, 160, 0.5) 0%, transparent 60%);
+    filter: blur(80px);
+    animation: aurora2 28s var(--ease) infinite;
+  }
+
+  .aurora-layer:nth-child(3) {
+    background:
+      radial-gradient(ellipse 50% 60% at 50% 50%, rgba(80, 130, 170, 0.45) 0%, transparent 65%);
+    filter: blur(100px);
+    animation: aurora3 35s var(--ease) infinite;
+  }
+
+  /* Layer 4 — sweeping streak. `alternate` = ping-pong, no hard loop jump. */
+  .aurora-layer:nth-child(4) {
+    background: linear-gradient(105deg,
+      transparent 30%,
+      rgba(120, 90, 180, 0.25) 45%,
+      rgba(80, 120, 190, 0.3) 55%,
+      transparent 70%);
+    filter: blur(40px);
+    animation: aurora4 26s var(--ease) infinite alternate;
+  }
+
+  /* Gentle global vignette for legibility (keeps focus, softens edges) */
+  .site-aurora::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 120% 120% at 50% 32%, transparent 42%, rgba(10, 10, 10, 0.6) 100%);
+  }
+  @keyframes aurora1 {
+    0%, 100% { transform: translate(0%, 0%) scale(1) rotate(0deg); }
+    33% { transform: translate(15%, -8%) scale(1.2) rotate(8deg); }
+    66% { transform: translate(-10%, 12%) scale(0.9) rotate(-5deg); }
+  }
+  @keyframes aurora2 {
+    0%, 100% { transform: translate(0%, 0%) scale(1) rotate(0deg); }
+    50% { transform: translate(-15%, -15%) scale(1.3) rotate(-12deg); }
+  }
+  @keyframes aurora3 {
+    0%, 100% { transform: translate(0%, 0%) scale(1); }
+    50% { transform: translate(20%, 10%) scale(1.4); }
+  }
+  @keyframes aurora4 {
+    0% { transform: translateX(-30%) translateY(-10%) skewY(-8deg); }
+    100% { transform: translateX(30%) translateY(10%) skewY(-8deg); }
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    will-change: transform, opacity;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  /* ORISON logo image — the cut font */
+  .hero-logo {
+    width: 100%;
+    max-width: min(85vw, 900px);
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    opacity: 0;
+    animation: heroFadeIn 1.4s var(--ease-out) 0.3s forwards;
+  }
+
+  @keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Keyboard focus — visible without polluting mouse interactions */
+  :focus-visible {
+    outline: 1px solid var(--fg-soft);
+    outline-offset: 3px;
+  }
+
+  .hero-bottom {
+    position: absolute;
+    bottom: 40px; left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 3;
+    opacity: 0;
+    animation: heroFadeIn 1s var(--ease) 1.2s forwards;
+  }
+
+  .scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+  }
+
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, transparent, var(--fg-dim), transparent);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, var(--fg) 50%, transparent);
+    animation: scrollDrop 2.5s var(--ease) infinite;
+  }
+
+  @keyframes scrollDrop {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+
+  /* ============================================
+     MANIFESTO (about the duo)
+     ============================================ */
+  .manifesto {
+    min-height: 70vh;
+    padding: 180px 48px 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    background: transparent;
+  }
+
+  .manifesto-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .manifesto-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+  }
+
+  .manifesto-text {
+    font-size: clamp(28px, 4.5vw, 68px);
+    font-weight: 200;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 64px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s var(--ease-out) 0.2s, transform 1.2s var(--ease-out) 0.2s;
+  }
+
+  .manifesto-text em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--fg);
+  }
+
+  .manifesto-text .dim {
+    color: var(--fg-dim);
+  }
+
+  .manifesto.in-view .manifesto-label,
+  .manifesto.in-view .manifesto-text,
+  .manifesto.in-view .coming-soon {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .coming-soon {
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    max-width: 700px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s var(--ease-out) 0.4s, transform 1s var(--ease-out) 0.4s;
+  }
+
+  .coming-soon-pulse {
+    width: 8px; height: 8px;
+    background: var(--fg);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px var(--fg);
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  .coming-soon-content { flex: 1; }
+
+  .coming-soon-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin-bottom: 6px;
+  }
+
+  .coming-soon-title {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--fg);
+  }
+
+  /* ============================================
+     SECTIONS
+     ============================================ */
+  .section {
+    padding: 160px 48px;
+    border-top: 1px solid var(--line);
+    position: relative;
+    z-index: 2;
+    background: transparent;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    margin-bottom: 100px;
+    align-items: end;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-number {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+  }
+
+  .section-title {
+    font-size: clamp(40px, 6vw, 88px);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+
+  .section-title .light { font-weight: 200; color: var(--fg-dim); }
+
+  .section-body {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ============================================
+     RELEASES
+     ============================================ */
+  .sort-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+
+  .sort-bar-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+  }
+
+  .sort-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .sort-chip {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--fg-dim);
+    cursor: pointer;
+    padding: 8px 16px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: color 0.3s var(--ease), border-color 0.3s var(--ease), background 0.3s var(--ease);
+  }
+
+  .sort-chip:hover { color: var(--fg); border-color: var(--line-strong); }
+
+  .sort-chip.active {
+    color: var(--bg);
+    background: var(--fg);
+    border-color: var(--fg);
+  }
+
+  .releases-list { border-top: 1px solid var(--line); }
+
+  .release {
+    display: grid;
+    grid-template-columns: 110px 70px 1.2fr 1.5fr 90px 50px;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+    cursor: pointer;
+    transition: padding 0.5s var(--ease), background 0.5s var(--ease);
+    position: relative;
+    text-decoration: none;
+    color: var(--fg);
+    overflow: hidden;
+  }
+
+  .release:hover { padding-left: 32px; padding-right: 32px; }
+
+  .release::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--fg);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s var(--ease);
+    z-index: 0;
+    opacity: 0.02;
+  }
+  .release:hover::before { transform: scaleX(1); }
+
+  .release > * { position: relative; z-index: 1; }
+
+  .release-cover {
+    width: 110px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    background-color: #1a1a1a;
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+    transition: transform 0.5s var(--ease), filter 0.5s var(--ease);
+    filter: brightness(0.85) contrast(1.05);
+  }
+
+  .release-cover.placeholder {
+    background: linear-gradient(135deg, #2a2530 0%, #1a1f2a 50%, #1a1815 100%);
+  }
+
+  .release:hover .release-cover {
+    transform: scale(1.05);
+    filter: brightness(1) contrast(1.1);
+  }
+
+  .release-cat {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--fg-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .release-artist {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--fg-dim);
+  }
+
+  .release-title {
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    transition: transform 0.5s var(--ease);
+  }
+
+  .release:hover .release-title {
+    transform: translateX(8px);
+  }
+
+  .release-year {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--fg-dim);
+    text-align: right;
+  }
+
+  .release-arrow {
+    text-align: right;
+    font-size: 20px;
+    color: var(--fg-dim);
+    transition: transform 0.5s var(--ease), color 0.5s var(--ease);
+  }
+
+  .release:hover .release-arrow {
+    transform: translateX(8px);
+    color: var(--fg);
+  }
+
+  .live-sets {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid var(--line);
+  }
+
+  .live-sets-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin-bottom: 32px;
+  }
+
+  /* ============================================
+     LABEL SECTION — Orison Rcrds (with Zona Pro)
+     ============================================ */
+  .label-section {
+    padding: 220px 48px 180px;
+    border-top: 1px solid var(--line);
+    background: transparent;
+    position: relative;
+    z-index: 2;
+  }
+
+  .label-divider {
+    max-width: 1400px;
+    margin: 0 auto 100px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    color: var(--fg-dim);
+  }
+
+  .label-divider .line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .label-divider .text {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .label-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .label-brand {
+    font-family: 'Zona Pro', sans-serif;
+    font-size: clamp(64px, 13vw, 200px);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    text-transform: lowercase;
+    margin-bottom: 80px;
+  }
+
+  .label-brand .bold { font-weight: 700; }
+  .label-brand .thin { font-weight: 100; color: var(--fg-dim); }
+
+  .label-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+    align-items: start;
+    margin-bottom: 140px;
+  }
+
+  .label-text {
+    font-family: 'Zona Pro', sans-serif;
+    font-weight: 100;
+    font-size: clamp(20px, 2.2vw, 30px);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  .label-text strong {
+    font-weight: 700;
+    color: var(--fg);
+  }
+
+  .label-text em {
+    font-style: italic;
+    font-weight: 100;
+  }
+
+  .label-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .label-meta-block {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+
+  .label-meta-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+
+  .label-meta-value {
+    font-family: 'Zona Pro', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .label-meta-value-list {
+    font-family: 'Zona Pro', sans-serif;
+    font-weight: 100;
+    font-size: 14px;
+    color: var(--fg-dim);
+    line-height: 1.7;
+    margin-top: 4px;
+  }
+
+  /* Services within label section */
+  .services {
+    padding-top: 80px;
+    border-top: 1px solid var(--line);
+  }
+
+  .services-header { margin-bottom: 60px; }
+
+  .services-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin-bottom: 16px;
+  }
+
+  .services-title {
+    font-family: 'Zona Pro', sans-serif;
+    font-weight: 100;
+    font-size: clamp(28px, 3.5vw, 48px);
+    line-height: 1.1;
+    max-width: 800px;
+    letter-spacing: -0.01em;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+
+  .service-block-title {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fg);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  .service-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .service-list li {
+    font-family: 'Zona Pro', sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+    color: var(--fg-soft);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .service-list li::before {
+    content: '—';
+    color: var(--fg-dim);
+    font-weight: 100;
+  }
+
+  /* Note: services are informational, not links — no hover/cursor change. */
+  .services-note {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .services-note-text {
+    font-family: 'Zona Pro', sans-serif;
+    font-weight: 100;
+    font-size: clamp(16px, 1.6vw, 21px);
+    line-height: 1.5;
+    color: var(--fg-soft);
+    max-width: 720px;
+  }
+
+  .services-note-text strong {
+    font-weight: 700;
+    color: var(--fg);
+  }
+
+  .services-note-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--fg);
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: gap 0.3s var(--ease);
+    position: relative;
+  }
+
+  .services-note-link::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 24px; bottom: -6px;
+    height: 1px;
+    background: var(--fg);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease);
+  }
+
+  .services-note-link:hover { gap: 16px; }
+  .services-note-link:hover::after { transform: scaleX(1); }
+
+  /* ============================================
+     CONTACT
+     ============================================ */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .contact-block {
+    border-top: 1px solid var(--line-strong);
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin-bottom: 24px;
+  }
+
+  .contact-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 32px;
+    border: 1px solid var(--line-strong);
+    color: var(--fg);
+    text-decoration: none;
+    font-family: 'Geist', -apple-system, sans-serif;
+    font-size: clamp(16px, 1.4vw, 20px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    transition: color 0.4s var(--ease), border-color 0.4s var(--ease);
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate; /* contain the fill layer so it can't slip behind the page */
+  }
+
+  .contact-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--fg);
+    transform: translateY(101%);
+    transition: transform 0.5s var(--ease);
+    z-index: -1;
+  }
+
+  .contact-button > span { position: relative; z-index: 1; }
+
+  .contact-button:hover { color: var(--bg); border-color: var(--fg); }
+  .contact-button:hover::before { transform: translateY(0); }
+  .contact-button .arrow { transition: transform 0.4s var(--ease); }
+  .contact-button:hover .arrow { transform: translateX(6px); }
+
+  /* Demo drop shortcut inside the label section */
+  .label-cta {
+    margin-top: -80px;
+    margin-bottom: 130px;
+  }
+
+  .contact-description {
+    font-size: 14px;
+    color: var(--fg-dim);
+    margin-top: 20px;
+    line-height: 1.6;
+    max-width: 400px;
+  }
+
+  /* ============================================
+     FOOTER
+     ============================================ */
+  .footer {
+    padding: 80px 48px 48px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+    align-items: end;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    background: transparent;
+  }
+
+  .footer-brand {
+    font-family: 'Zona Pro', sans-serif;
+    font-size: clamp(24px, 3vw, 36px);
+    line-height: 1;
+    text-transform: lowercase;
+  }
+
+  .footer-brand .bold { font-weight: 700; }
+  .footer-brand .thin { font-weight: 100; color: var(--fg-dim); }
+
+  .footer-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-socials a {
+    color: var(--fg-dim);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: 'Geist Mono', monospace;
+    transition: color 0.3s var(--ease);
+  }
+
+  .footer-socials a:hover { color: var(--fg); }
+
+  .footer-meta {
+    text-align: right;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    line-height: 1.8;
+  }
+
+  /* ============================================
+     MODAL & LIGHTBOX
+     ============================================ */
+  .modal {
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+    padding: 40px;
+    cursor: pointer;
+  }
+
+  .modal.active { display: flex; animation: fadeIn 0.4s var(--ease); }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .modal-content {
+    background: var(--bg-elevated);
+    border: 1px solid var(--line-strong);
+    padding: 48px;
+    max-width: 480px;
+    width: 100%;
+    cursor: default;
+    position: relative;
+  }
+
+  .modal-cat {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin-bottom: 20px;
+  }
+
+  .modal-artist {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+
+  .modal-title {
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    line-height: 1.1;
+  }
+
+  .modal-streams {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stream-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border: 1px solid var(--line);
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: 'Geist Mono', monospace;
+    transition: all 0.3s var(--ease);
+  }
+
+  .stream-link:hover {
+    border-color: var(--fg);
+    background: var(--fg);
+    color: var(--bg);
+  }
+
+  .stream-link .arrow { transition: transform 0.3s var(--ease); }
+  .stream-link:hover .arrow { transform: translateX(4px); }
+
+  .modal-close {
+    position: absolute;
+    top: 24px; right: 24px;
+    background: none; border: none;
+    color: var(--fg-dim);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.3s var(--ease);
+  }
+
+  .modal-close:hover { color: var(--fg); }
+
+  /* ============================================
+     CONTACT MODAL (form + copy email)
+     ============================================ */
+  .contact-modal .modal-content { max-width: 520px; }
+
+  .cf-email-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    border: 1px solid var(--line-strong);
+    background: rgba(245, 245, 240, 0.03);
+  }
+
+  .cf-email-addr {
+    font-family: 'Geist Mono', monospace;
+    font-size: clamp(15px, 2vw, 19px);
+    letter-spacing: 0.02em;
+    color: var(--fg);
+    word-break: break-all;
+  }
+
+  .cf-copy {
+    flex-shrink: 0;
+    background: none;
+    border: 1px solid var(--line-strong);
+    color: var(--fg-dim);
+    cursor: pointer;
+    padding: 8px 14px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s var(--ease);
+  }
+
+  .cf-copy:hover { color: var(--fg); border-color: var(--fg); }
+
+  .cf-field { margin-bottom: 18px; }
+
+  .cf-label {
+    display: block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+
+  .cf-input {
+    width: 100%;
+    background: rgba(245, 245, 240, 0.02);
+    border: 1px solid var(--line);
+    color: var(--fg);
+    font-family: 'Geist', -apple-system, sans-serif;
+    font-size: 15px;
+    padding: 12px 14px;
+    transition: border-color 0.3s var(--ease);
+    outline: none;
+    border-radius: 2px;
+  }
+
+  .cf-input:focus { border-color: var(--line-strong); }
+  .cf-input::placeholder { color: var(--fg-dim); }
+  .cf-textarea { resize: vertical; min-height: 96px; line-height: 1.5; }
+
+  .cf-submit { width: 100%; justify-content: center; margin-top: 8px; }
+
+  .cf-hint {
+    font-size: 12px;
+    color: var(--fg-dim);
+    margin-top: 14px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .lightbox {
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+    padding: 40px;
+    cursor: pointer;
+  }
+
+  .lightbox.active { display: flex; animation: fadeIn 0.4s var(--ease); }
+
+  .lightbox-content {
+    width: 100%;
+    max-width: 1200px;
+    aspect-ratio: 16 / 9;
+    cursor: default;
+  }
+
+  .lightbox iframe {
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 32px; right: 32px;
+    color: var(--fg);
+    background: none;
+    border: 1px solid var(--line-strong);
+    padding: 12px 20px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+  }
+
+  .lightbox-close:hover { background: var(--fg); color: var(--bg); }
+
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  @media (max-width: 900px) {
+    .nav { padding: 18px 20px; }
+    .nav-brand { height: 18px; }
+    .nav-right { gap: 12px; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 10px; letter-spacing: 0.06em; }
+
+    .hero { padding: 0 24px; }
+    .hero-bottom { bottom: 24px; }
+
+    .manifesto { padding: 120px 24px 100px; }
+    .manifesto-text { font-size: clamp(24px, 7vw, 40px); }
+
+    .section { padding: 100px 24px; }
+    .section-header {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .release {
+      grid-template-columns: 80px 1fr 32px;
+      gap: 14px;
+      padding: 18px 0;
+    }
+
+    .release-cat, .release-artist, .release-year { display: none; }
+    .release-cover { width: 80px; height: 60px; }
+    .release-title { font-size: 16px; }
+
+    .label-section { padding: 140px 24px 100px; }
+    .label-divider { margin-bottom: 60px; }
+    .label-content { grid-template-columns: 1fr; gap: 60px; margin-bottom: 80px; }
+    .label-brand { margin-bottom: 60px; }
+
+    .services-grid { grid-template-columns: 1fr; gap: 40px; }
+
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+
+    .footer {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 60px 24px 32px;
+    }
+    .footer-meta { text-align: left; }
+
+    .modal-content { padding: 32px 24px; }
+    .modal-title { font-size: 24px; }
+  }
+
+  @media (max-width: 900px) {
+    .label-cta { margin-top: -40px; margin-bottom: 90px; }
+
+    /* Lighter blurs on mobile — same look, much cheaper on the GPU */
+    .aurora-layer:nth-child(1) { filter: blur(45px); }
+    .aurora-layer:nth-child(2) { filter: blur(50px); }
+    .aurora-layer:nth-child(3) { filter: blur(60px); }
+    .aurora-layer:nth-child(4) { filter: blur(28px); }
+  }
+
+  @media (max-width: 500px) {
+    .nav-links { display: none; }
+  }
+
+  /* ============================================
+     REDUCED MOTION — respect the user's setting
+     ============================================ */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .site-aurora { opacity: 0.55 !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Global animated gradient background (fixed, behind everything) -->
+<div class="site-aurora" id="site-aurora" aria-hidden="true">
+  <div class="aurora-layer"></div>
+  <div class="aurora-layer"></div>
+  <div class="aurora-layer"></div>
+  <div class="aurora-layer"></div>
+</div>
+
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand" aria-label="Home">
+    <img src="./assets/logo/orison.png" alt="ORISON">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#releases" data-en="Releases" data-fr="Sorties">Releases</a></li>
+      <li><a href="#label" data-en="Label" data-fr="Label">Label</a></li>
+      <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button class="active" data-lang="en">EN</button>
+      <button data-lang="fr">FR</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO — ORISON the duo, with the cut logo -->
+<section class="hero">
+  <div class="hero-inner">
+    <img src="./assets/logo/orison.png" alt="ORISON" class="hero-logo">
+  </div>
+
+  <div class="hero-bottom">
+    <div class="scroll-indicator">
+      <span data-en="Scroll" data-fr="Défiler">Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO — about the duo -->
+<section class="manifesto" id="manifesto">
+  <div class="manifesto-inner">
+    <div class="manifesto-label" data-en="The duo" data-fr="Le duo">The duo</div>
+    <h2 class="manifesto-text"
+        data-en="<em>ORISON</em> is a duo of producers from Paris. <span class='dim'>Crafting cutting-edge electronic music with over a decade of experience behind the desk.</span>"
+        data-fr="<em>ORISON</em> est un duo de producteurs basé à Paris. <span class='dim'>Nous créons une musique électronique avant-gardiste, forts de plus de dix ans d'expérience derrière les consoles.</span>">
+      <em>ORISON</em> is a duo of producers from Paris. <span class="dim">Crafting cutting-edge electronic music with over a decade of experience behind the desk.</span>
+    </h2>
+
+    <div class="coming-soon">
+      <div class="coming-soon-pulse"></div>
+      <div class="coming-soon-content">
+        <div class="coming-soon-label" data-en="Next release" data-fr="Prochaine sortie">Next release</div>
+        <div class="coming-soon-title" data-en="ORN013 — Coming soon" data-fr="ORN013 — Bientôt">ORN013 — Coming soon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELEASES -->
+<section class="section" id="releases">
+  <div class="section-header">
+    <div class="section-number" data-en="01 / Catalog" data-fr="01 / Catalogue">01 / Catalog</div>
+    <h2 class="section-title">
+      <span data-en="Releases" data-fr="Sorties">Releases</span><span class="light">.</span>
+    </h2>
+  </div>
+  <div class="section-body">
+    <div class="sort-bar">
+      <span class="sort-bar-label" data-en="Sort by" data-fr="Trier par">Sort by</span>
+      <div class="sort-chips">
+        <button type="button" class="sort-chip active" data-sort="date" data-en="Release date" data-fr="Date de sortie">Release date</button>
+        <button type="button" class="sort-chip" data-sort="artist" data-en="Artist" data-fr="Artiste">Artist</button>
+        <button type="button" class="sort-chip" data-sort="cat" data-en="Catalog №" data-fr="Référence">Catalog №</button>
+      </div>
+    </div>
+    <div class="releases-list" id="releases-list"></div>
+
+    <div class="live-sets">
+      <div class="live-sets-label" data-en="Live & DJ Sets" data-fr="Lives & DJ Sets">Live & DJ Sets</div>
+      <div class="releases-list" id="livesets-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- LABEL SECTION — Orison Rcrds, with Zona Pro -->
+<section class="label-section" id="label">
+  <div class="label-divider">
+    <div class="line"></div>
+    <span class="text" data-en="The Label" data-fr="Le Label">The Label</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="label-inner">
+    <h2 class="label-brand">
+      <span class="bold">orison</span> <span class="thin">rcrds</span>
+    </h2>
+
+    <div class="label-content">
+      <div class="label-text"
+           data-en="Founded by ORISON in 2026, <strong>Orison Rcrds</strong> is an independent music label that releases cutting-edge electronic music — and helps bring creative projects to life."
+           data-fr="Fondé par ORISON en 2026, <strong>Orison Rcrds</strong> est un label de musique indépendant qui publie de la musique électronique avant-gardiste — et accompagne des projets créatifs jusqu'à leur aboutissement.">
+        Founded by ORISON in 2026, <strong>Orison Rcrds</strong> is an independent music label that releases cutting-edge electronic music — and helps bring creative projects to life.
+      </div>
+      <div class="label-meta">
+        <div class="label-meta-block">
+          <div class="label-meta-label" data-en="Based in" data-fr="Basé à">Based in</div>
+          <div class="label-meta-value">Paris, France</div>
+        </div>
+        <div class="label-meta-block">
+          <div class="label-meta-label" data-en="Founded" data-fr="Fondé en">Founded</div>
+          <div class="label-meta-value">2026</div>
+        </div>
+        <div class="label-meta-block">
+          <div class="label-meta-label" data-en="Genres" data-fr="Genres">Genres</div>
+          <div class="label-meta-value-list">
+            Progressive House · Bass House · Afro House<br>
+            Deep House · French Touch · Techno<br>
+            Melodic Techno · Melodic Dubstep · Electronic
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="label-cta">
+      <button type="button" class="contact-button" data-contact="demo">
+        <span data-en="Demo drop" data-fr="Envoyer une démo">Demo drop</span>
+        <span class="arrow">→</span>
+      </button>
+    </div>
+
+    <div class="services">
+      <div class="services-header">
+        <div class="services-label" data-en="Also offering" data-fr="Également proposé">Also offering</div>
+        <h3 class="services-title"
+            data-en="Beyond releases, we work with artists and companies to bring sound to their projects."
+            data-fr="Au-delà des sorties, nous accompagnons artistes et entreprises pour donner vie au son de leurs projets.">
+          Beyond releases, we work with artists and companies to bring sound to their projects.
+        </h3>
+      </div>
+      <div class="services-grid">
+        <div class="service-block">
+          <h4 class="service-block-title" data-en="For artists" data-fr="Pour les artistes">For artists</h4>
+          <ul class="service-list">
+            <li data-en="Music lessons" data-fr="Cours de musique">Music lessons</li>
+            <li data-en="Mixing & mastering" data-fr="Mixage & mastering">Mixing & mastering</li>
+            <li data-en="Production" data-fr="Production">Production</li>
+          </ul>
+        </div>
+        <div class="service-block">
+          <h4 class="service-block-title" data-en="For companies" data-fr="Pour les entreprises">For companies</h4>
+          <ul class="service-list">
+            <li data-en="Original music creation" data-fr="Création musicale originale">Original music creation</li>
+            <li data-en="Editing & mixing" data-fr="Edit & mixage">Editing & mixing</li>
+            <li data-en="Sound design" data-fr="Sound design">Sound design</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="services-note">
+        <p class="services-note-text"
+           data-en="Every project is bespoke and <strong>quote-based</strong> — reach out and we'll define the right support together."
+           data-fr="Chaque projet est sur-mesure et <strong>réalisé sur devis</strong> — contactez-nous pour définir ensemble l'accompagnement le plus adapté.">
+          Every project is bespoke and <strong>quote-based</strong> — reach out and we'll define the right support together.
+        </p>
+        <button type="button" class="services-note-link" data-contact="general">
+          <span data-en="Request a quote" data-fr="Demander un devis">Request a quote</span>
+          <span class="arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-header">
+    <div class="section-number" data-en="02 / Contact" data-fr="02 / Contact">02 / Contact</div>
+    <h2 class="section-title">
+      <span data-en="Get in touch" data-fr="Nous contacter">Get in touch</span><span class="light">.</span>
+    </h2>
+  </div>
+  <div class="section-body">
+    <div class="contact-grid">
+      <div class="contact-block">
+        <div class="contact-label" data-en="General inquiries" data-fr="Demandes générales">General inquiries</div>
+        <button type="button" class="contact-button" data-contact="general">
+          <span data-en="Contact us" data-fr="Nous écrire">Contact us</span>
+          <span class="arrow">→</span>
+        </button>
+        <p class="contact-description"
+           data-en="Collaborations, press, partnerships and general questions."
+           data-fr="Collaborations, presse, partenariats et questions générales.">
+          Collaborations, press, partnerships and general questions.
+        </p>
+      </div>
+      <div class="contact-block">
+        <div class="contact-label" data-en="Booking & demos" data-fr="Booking & démos">Booking & demos</div>
+        <button type="button" class="contact-button" data-contact="demo">
+          <span data-en="Send your demo" data-fr="Envoyer une démo">Send your demo</span>
+          <span class="arrow">→</span>
+        </button>
+        <p class="contact-description"
+           data-en="Booking requests, demo submissions and signing inquiries."
+           data-fr="Demandes de booking, envoi de démos et propositions de signature.">
+          Booking requests, demo submissions and signing inquiries.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-brand">
+    <span class="bold">orison</span> <span class="thin">rcrds</span>
+  </div>
+  <div class="footer-socials" id="footer-socials"></div>
+  <div class="footer-meta">
+    <span data-en="Est. 2026 — Paris, FR" data-fr="Fondé en 2026 — Paris, FR">Est. 2026 — Paris, FR</span><br>
+    © 2026 Orison Rcrds<br>
+    <span data-en="All rights reserved" data-fr="Tous droits réservés">All rights reserved</span>
+  </div>
+</footer>
+
+<div class="modal contact-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+  <div class="modal-content">
+    <button class="modal-close" id="contact-modal-close" aria-label="Close">✕</button>
+    <div class="modal-cat" id="contact-modal-kicker">General inquiries</div>
+    <div class="modal-title" id="contact-modal-title">Write to us</div>
+
+    <div class="cf-email-display">
+      <span class="cf-email-addr" id="cf-email-addr">orisonoff@gmail.com</span>
+      <button type="button" class="cf-copy" id="cf-copy" data-en="Copy" data-fr="Copier">Copy</button>
+    </div>
+
+    <div class="cf-field">
+      <label class="cf-label" for="cf-from" data-en="Your email" data-fr="Votre email">Your email</label>
+      <input type="email" id="cf-from" class="cf-input" placeholder="you@email.com" autocomplete="email">
+    </div>
+    <div class="cf-field">
+      <label class="cf-label" for="cf-subject" data-en="Subject" data-fr="Objet">Subject</label>
+      <input type="text" id="cf-subject" class="cf-input">
+    </div>
+    <div class="cf-field">
+      <label class="cf-label" for="cf-message" data-en="Message" data-fr="Message">Message</label>
+      <textarea id="cf-message" class="cf-input cf-textarea" rows="4"></textarea>
+    </div>
+
+    <button type="button" class="contact-button cf-submit" id="cf-submit">
+      <span data-en="Open in my mail app" data-fr="Ouvrir mon application mail">Open in my mail app</span>
+      <span class="arrow">→</span>
+    </button>
+    <p class="cf-hint"
+       data-en="This opens your email app with everything pre-filled. No address gets stuck in your browser bar."
+       data-fr="Ceci ouvre votre application mail avec tout pré-rempli. Plus d'adresse coincée dans la barre du navigateur.">
+      This opens your email app with everything pre-filled. No address gets stuck in your browser bar.
+    </p>
+  </div>
+</div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-content">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div class="modal-cat" id="modal-cat"></div>
+    <div class="modal-artist" id="modal-artist"></div>
+    <div class="modal-title" id="modal-title"></div>
+    <div class="modal-streams" id="modal-streams"></div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close" data-en="Close ✕" data-fr="Fermer ✕">Close ✕</button>
+  <div class="lightbox-content">
+    <iframe id="lightbox-iframe" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+  // ============================================
+  //  SITE DATA
+  //  >>> To add a new release, see AJOUTER-UNE-SORTIE.txt <<<
+  //  Releases listed chronologically: most recent FIRST.
+  //  Catalog numbers (ORN001, ORN002...) auto-assigned.
+  //  Add a `cover` field with image URL to override auto YouTube thumbnail.
+  // ============================================
+  const data = {
+    releases: [
+      { artist: "Vilandrix", title: "Back To Life", year: "2025",
+        streams: { youtube: "https://youtu.be/qh2MFGlRIq4" } },
+      { artist: "Cheyen, Vilandrix ft. Louis Gustave", title: "Hold It Now", year: "2025",
+        streams: {
+          spotify: "https://open.spotify.com/intl-fr/track/1bPBx5idLUsB37ejnoy2x8",
+          apple: "https://music.apple.com/fr/album/hold-it-now-feat-louis-gustave/1794514289?i=1794514290",
+          deezer: "https://dzr.page.link/h5zWC7JSVwLaiQjX6",
+          youtube: "https://youtu.be/LQqLEZCf2ww"
+        }
+      },
+      { artist: "Cheyen", title: "Ethereal", year: "2024",
+        cover: "./assets/covers/ethereal.jpg",
+        streams: {
+          spotify: "https://open.spotify.com/intl-fr/track/2yzc7gkQvmM4urVUCycrrU",
+          apple: "https://music.apple.com/fr/album/ethereal-single/1800268614",
+          deezer: "https://dzr.page.link/V2U9MV3YM9W7tXJ39"
+        }
+      },
+      { artist: "Cheyen", title: "Rakata", year: "2024",
+        cover: "./assets/covers/rakata.jpg",
+        streams: {
+          spotify: "https://open.spotify.com/intl-fr/track/7FvkEv0g5Fi1vcTnhOipxf",
+          apple: "https://music.apple.com/fr/song/rakata/1777440026",
+          deezer: "https://dzr.page.link/5ghrUbDWwkRtU5BD9"
+        }
+      },
+      { artist: "Vilandrix", title: "Vicious", year: "2024",
+        streams: {
+          spotify: "https://open.spotify.com/intl-fr/track/4fJieinlBsmABGDpZEywEX",
+          apple: "https://music.apple.com/fr/album/vicious-single/1757617333",
+          deezer: "https://deezer.page.link/otj6j99EFyDNvtvt9",
+          youtube: "https://youtu.be/_odTsdfrppk"
+        }
+      },
+      { artist: "Cheyen", title: "Dua Lipa — Houdini (Remix)", year: "2024",
+        streams: { youtube: "https://youtu.be/FDrWignLSrY" } },
+      { artist: "Cheyen", title: "Zerb — Mwaki (Remix)", year: "2024",
+        cover: "./assets/covers/mwaki-remix.jpg",
+        streams: { youtube: "https://youtu.be/UkaaZ2_KUaI" } },
+      { artist: "Vilandrix", title: "Feel It", year: "2024",
+        streams: { youtube: "https://youtu.be/19YCb-S2fPA" } },
+      { artist: "Cheyen, Vilandrix", title: "Hans Zimmer — Time (Remix)", year: "2024",
+        streams: { youtube: "https://youtu.be/JczbEyJB79c" } },
+      { artist: "Vilandrix", title: "Promises", year: "2024",
+        streams: {
+          spotify: "https://open.spotify.com/intl-fr/track/4iWpEfhwGFufJgaJ841iZ9",
+          apple: "https://music.apple.com/fr/album/promises-single/1725378902",
+          deezer: "https://deezer.page.link/xttgq1xFhrairs2W9",
+          youtube: "https://youtu.be/QnYJ9zm2z6w"
+        }
+      },
+      { artist: "Cheyen, Vilandrix", title: "Culture Code, Caslow — Wish You The Best (Remix)", year: "2023",
+        cover: "./assets/covers/wish-you-the-best.jpg",
+        streams: { youtube: "https://youtu.be/kunXGVNSm9M" } },
+      { artist: "Cheyen", title: "Need You", year: "2022",
+        cover: "./assets/covers/need-you.jpg",
+        streams: {
+          spotify: "https://open.spotify.com/intl-fr/track/0liSHAEEiPLvVfNvZVnYWx",
+          apple: "https://music.apple.com/fr/song/need-you/1662094044",
+          deezer: "https://dzr.page.link/v3tF2jLtiw8CgawP6",
+          youtube: "https://youtu.be/XCBNwrPhbwE"
+        }
+      }
+    ],
+    liveSets: [
+      { artist: "Vilandrix", title: "Live DJ Set From Paris", year: "2024",
+        streams: { youtube: "https://youtu.be/UC_4hpy5kQU" } }
+    ],
+    socials: [
+      { label: "YouTube", url: "https://www.youtube.com/@Orisonrcrds/" },
+      { label: "Instagram", url: "https://www.instagram.com/orisonrcrds" }
+    ]
+  };
+
+  // Auto-assign catalog numbers + keep original index for lookups
+  data.releases.forEach((r, idx) => {
+    const num = data.releases.length - idx;
+    r.cat = "ORN" + String(num).padStart(3, '0');
+    r._idx = idx;
+  });
+  data.liveSets.forEach((item, idx) => {
+    const num = data.liveSets.length - idx;
+    item.cat = "LIVE" + String(num).padStart(3, '0');
+    item._idx = idx;
+  });
+
+  // YouTube ID extractor
+  function getYoutubeId(url) {
+    const match = url && url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^?&]+)/);
+    return match ? match[1] : null;
+  }
+
+  // Cover URL: explicit `cover` > YouTube thumbnail > placeholder.
+  // mqdefault always exists (real 16:9, no grey 404 image), so the list
+  // renders instantly; we then upgrade to maxresdefault when available.
+  function getCoverUrl(item) {
+    if (item.cover) return item.cover;
+    const ytId = item.streams && item.streams.youtube ? getYoutubeId(item.streams.youtube) : null;
+    if (ytId) return `https://img.youtube.com/vi/${ytId}/mqdefault.jpg`;
+    return null;
+  }
+
+  function upgradeYoutubeCover(item, coverEl) {
+    if (item.cover || !coverEl) return;
+    const ytId = item.streams && item.streams.youtube ? getYoutubeId(item.streams.youtube) : null;
+    if (!ytId) return;
+    const hi = new Image();
+    hi.onload = () => {
+      // YouTube returns a 120x90 grey placeholder when maxres doesn't exist
+      if (hi.naturalWidth > 120) coverEl.style.backgroundImage = `url('${hi.src}')`;
+    };
+    hi.src = `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`;
+  }
+
+  // Render
+  function renderReleaseList(items, containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    items.forEach((r, idx) => {
+      const cover = getCoverUrl(r);
+      const link = document.createElement('a');
+      link.className = 'release';
+      link.href = '#';
+      link.dataset.itemList = containerId;
+      link.dataset.itemIndex = (r._idx !== undefined ? r._idx : idx);
+
+      const coverDiv = cover
+        ? `<div class="release-cover" style="background-image: url('${cover}')"></div>`
+        : `<div class="release-cover placeholder"></div>`;
+
+      link.innerHTML = `
+        ${coverDiv}
+        <div class="release-cat">${r.cat}</div>
+        <div class="release-artist">${r.artist}</div>
+        <div class="release-title">${r.title}</div>
+        <div class="release-year">${r.year}</div>
+        <div class="release-arrow">→</div>
+      `;
+      container.appendChild(link);
+      upgradeYoutubeCover(r, link.querySelector('.release-cover'));
+    });
+  }
+
+  // ============================================
+  //  Sorting (releases only)
+  // ============================================
+  let currentSort = 'date';
+
+  function sortedReleases(mode) {
+    const arr = data.releases.slice();
+    if (mode === 'artist') {
+      arr.sort((a, b) =>
+        a.artist.localeCompare(b.artist, undefined, { sensitivity: 'base' }) ||
+        b.cat.localeCompare(a.cat)); // same artist: newest first
+    } else if (mode === 'cat') {
+      arr.sort((a, b) => b.cat.localeCompare(a.cat)); // ORN012 before ORN011
+    } else {
+      // date: newest year first, then by catalog number desc
+      arr.sort((a, b) => (parseInt(b.year, 10) - parseInt(a.year, 10)) || b.cat.localeCompare(a.cat));
+    }
+    return arr;
+  }
+
+  function renderReleases() {
+    renderReleaseList(sortedReleases(currentSort), 'releases-list');
+  }
+
+  renderReleases();
+  renderReleaseList(data.liveSets, 'livesets-list');
+
+  document.querySelectorAll('.sort-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      currentSort = chip.dataset.sort;
+      document.querySelectorAll('.sort-chip').forEach(c => c.classList.toggle('active', c === chip));
+      renderReleases();
+    });
+  });
+
+  // Footer socials
+  const footerSocials = document.getElementById('footer-socials');
+  data.socials.forEach(s => {
+    const a = document.createElement('a');
+    a.href = s.url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = s.label;
+    footerSocials.appendChild(a);
+  });
+
+  // ============================================
+  //  Modal & Lightbox
+  // ============================================
+  const modal = document.getElementById('modal');
+  const modalClose = document.getElementById('modal-close');
+  const modalCat = document.getElementById('modal-cat');
+  const modalArtist = document.getElementById('modal-artist');
+  const modalTitle = document.getElementById('modal-title');
+  const modalStreams = document.getElementById('modal-streams');
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxIframe = document.getElementById('lightbox-iframe');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  const STREAM_LABELS = { spotify: 'Spotify', apple: 'Apple Music', deezer: 'Deezer', youtube: 'YouTube' };
+
+  function openModalForRelease(release) {
+    modalCat.textContent = release.cat;
+    modalArtist.textContent = release.artist;
+    modalTitle.textContent = release.title;
+    modalStreams.innerHTML = '';
+
+    Object.keys(release.streams).forEach(key => {
+      const a = document.createElement('a');
+      a.className = 'stream-link';
+      a.href = release.streams[key];
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.innerHTML = `<span>${STREAM_LABELS[key] || key}</span><span class="arrow">→</span>`;
+      modalStreams.appendChild(a);
+    });
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openLightboxForVideo(youtubeUrl) {
+    const id = getYoutubeId(youtubeUrl);
+    if (!id) return;
+    lightboxIframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() { modal.classList.remove('active'); document.body.style.overflow = ''; }
+  function closeLightbox() { lightbox.classList.remove('active'); lightboxIframe.src = ''; document.body.style.overflow = ''; }
+
+  ['releases-list', 'livesets-list'].forEach(listId => {
+    const container = document.getElementById(listId);
+    container.addEventListener('click', (e) => {
+      const el = e.target.closest('.release');
+      if (!el) return;
+      e.preventDefault();
+      const list = el.dataset.itemList;
+      const idx = parseInt(el.dataset.itemIndex, 10);
+
+      let item;
+      if (list === 'releases-list') item = data.releases[idx];
+      else if (list === 'livesets-list') item = data.liveSets[idx];
+
+      if (!item || !item.streams) return;
+      const streamKeys = Object.keys(item.streams);
+
+      if (list === 'livesets-list' && item.streams.youtube) {
+        openLightboxForVideo(item.streams.youtube);
+        return;
+      }
+
+      if (streamKeys.length === 1 && streamKeys[0] === 'youtube') {
+        openLightboxForVideo(item.streams.youtube);
+      } else {
+        openModalForRelease(item);
+      }
+    });
+  });
+
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (modal.classList.contains('active')) closeModal();
+      if (lightbox.classList.contains('active')) closeLightbox();
+      const cm = document.getElementById('contact-modal');
+      if (cm && cm.classList.contains('active')) closeContactModal();
+    }
+  });
+
+  // ============================================
+  //  Scroll-driven effects
+  // ============================================
+  const nav = document.getElementById('nav');
+  const heroInner = document.querySelector('.hero-inner');
+  const siteAurora = document.getElementById('site-aurora');
+  const manifesto = document.getElementById('manifesto');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function onScroll() {
+    const y = window.scrollY;
+    const vh = window.innerHeight;
+    nav.classList.toggle('scrolled', y > 80);
+
+    // Keep the gradient everywhere, just calmer as you scroll (never full black)
+    if (siteAurora && !reduceMotion) {
+      const dim = Math.min(y / (vh * 0.9), 1);
+      siteAurora.style.opacity = (1 - dim * 0.62).toFixed(3);
+    }
+
+    if (heroInner && !reduceMotion) {
+      if (y < vh) {
+        const progress = Math.min(y / (vh * 0.8), 1);
+        heroInner.style.transform = `translateY(${y * 0.3}px) scale(${1 - progress * 0.15})`;
+        heroInner.style.opacity = `${Math.max(1 - progress * 1.2, 0)}`;
+      } else {
+        heroInner.style.opacity = '0';
+      }
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const manifestoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, { threshold: 0.2 });
+
+  if (manifesto) manifestoObserver.observe(manifesto);
+
+  // ============================================
+  //  Language toggle (EN / FR)
+  // ============================================
+  const langButtons = document.querySelectorAll('.lang-toggle button');
+  let currentLang = localStorage.getItem('orison-lang') || 'en';
+
+  function applyLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    localStorage.setItem('orison-lang', lang);
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const value = el.dataset[lang];
+      if (value !== undefined) el.innerHTML = value;
+    });
+
+    langButtons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+  }
+
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  // ============================================
+  //  Contact modal (form + copy email + open mail app)
+  // ============================================
+  const EMAIL = 'orisonoff@gmail.com';
+  const contactModal = document.getElementById('contact-modal');
+  const cmClose = document.getElementById('contact-modal-close');
+  const cmKicker = document.getElementById('contact-modal-kicker');
+  const cmTitle = document.getElementById('contact-modal-title');
+  const cfFrom = document.getElementById('cf-from');
+  const cfSubject = document.getElementById('cf-subject');
+  const cfMessage = document.getElementById('cf-message');
+  const cfSubmit = document.getElementById('cf-submit');
+  const cfCopy = document.getElementById('cf-copy');
+
+  const CONTACT_PRESETS = {
+    general: {
+      kicker: { en: 'General inquiries', fr: 'Demandes générales' },
+      title:  { en: 'Write to us', fr: 'Nous écrire' },
+      subject: { en: 'General inquiry — Orison Rcrds', fr: 'Demande générale — Orison Rcrds' }
+    },
+    demo: {
+      kicker: { en: 'Booking & demos', fr: 'Booking & démos' },
+      title:  { en: 'Send your demo', fr: 'Envoyer une démo' },
+      subject: { en: 'Demo submission — Orison Rcrds', fr: 'Envoi de démo — Orison Rcrds' }
+    }
+  };
+
+  function setBilingual(el, en, fr) {
+    el.dataset.en = en;
+    el.dataset.fr = fr;
+    el.textContent = (currentLang === 'fr' ? fr : en);
+  }
+
+  function openContactModal(type) {
+    const preset = CONTACT_PRESETS[type] || CONTACT_PRESETS.general;
+    setBilingual(cmKicker, preset.kicker.en, preset.kicker.fr);
+    setBilingual(cmTitle, preset.title.en, preset.title.fr);
+    cfSubject.value = (currentLang === 'fr' ? preset.subject.fr : preset.subject.en);
+    contactModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => cfFrom.focus(), 60);
+  }
+
+  function closeContactModal() {
+    contactModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-contact]').forEach(btn => {
+    btn.addEventListener('click', () => openContactModal(btn.dataset.contact));
+  });
+
+  cfSubmit.addEventListener('click', () => {
+    const subject = cfSubject.value || '';
+    const from = cfFrom.value ? ('From: ' + cfFrom.value + '\n\n') : '';
+    const body = from + (cfMessage.value || '');
+    window.location.href = 'mailto:' + EMAIL +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+  });
+
+  cfCopy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+    } catch (err) {
+      const tmp = document.createElement('textarea');
+      tmp.value = EMAIL;
+      tmp.style.position = 'fixed';
+      tmp.style.opacity = '0';
+      document.body.appendChild(tmp);
+      tmp.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      tmp.remove();
+    }
+    setBilingual(cfCopy, 'Copied ✓', 'Copié ✓');
+    setTimeout(() => setBilingual(cfCopy, 'Copy', 'Copier'), 1600);
+  });
+
+  cmClose.addEventListener('click', closeContactModal);
+  contactModal.addEventListener('click', (e) => { if (e.target === contactModal) closeContactModal(); });
+
+  applyLang(currentLang);
+</script>
+
+</body>
+</html>
